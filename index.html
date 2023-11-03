@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Number</title>
+</head>
+<style>
+    .container{
+        display: flex;
+        justify-content: center;
+        background-image: url("https://www.codespeedy.com/wp-content/uploads/2018/12/number-guessing-game-in-python-1024x778.jpg");
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+           }
+
+     h1, p, h3{
+        color: red;
+     }      
+</style>
+<body>
+    <div class="container">
+        <div>
+            <div class="gameModeChoice">
+                <input type="radio" id="em" name="fav_language" value="15">
+                <label for="html">Easy Mode</label><br>
+                <input type="radio" id="nm" name="fav_language" value="10">
+                <label for="css">Normal Mode</label><br>
+                <input type="radio" id="hm" name="fav_language" value="5">
+                <label for="javascript">Hard Mode</label>
+            </div>
+            <h1> Find The Number (between 0  and 100)</h1>
+            <input type="text">
+            <button>Check</button>
+            <h3></h3>
+            <p></p>
+     </div>
+
+    </div>
+    
+    
+
+    <script>
+
+
+      const  easyModePos = document.querySelector(".gameModeChoice:nth-child(4)")
+        console.log(easyModePos);
+
+        document.querySelector("button").addEventListener("click",() =>{
+            let input = document.querySelector("input").value
+            let guessN = guessedNumber(input)
+            document.querySelector("h3").innerText = guessN
+            console.log(guessN);
+        })
+
+
+        let rightNumber = 35
+        let count = 0
+        let hardmode = 5
+        let easymode = 15
+        let normalmode = 10
+
+        const  guessedNumber = (number) => {
+            count++
+            if (number > rightNumber){
+                return "higher"
+            }else if (number < rightNumber){
+                return "lower"
+            }else {
+                return "You are the winner"
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+</html>
