@@ -6,7 +6,11 @@ let message = document.querySelector(".msg")
 
 let liveScore = 10;
 
-let topscore = 0;
+let topscore = localStorage.getItem("top-score") || 0;
+
+
+
+document.querySelector(".top-score").textContent = topscore
 
 
 document.querySelector(".check").addEventListener("click", () =>{
@@ -20,6 +24,8 @@ document.querySelector(".check").addEventListener("click", () =>{
         document.querySelector("body").style.backgroundColor ="green"
         document.querySelector(".number").textContent = rightNumber
         if (liveScore > topscore){
+            localStorage.setItem(".top-score",liveScore)
+            
             topscore = liveScore
             document.querySelector(".top-score").textContent = topscore
         }
@@ -30,8 +36,8 @@ document.querySelector(".check").addEventListener("click", () =>{
             liveScore --;
             document.querySelector(".score").textContent = liveScore
 
-            guessedNo < rightNumber ? message.textContent ="lower"
-            :message.textContent ="higher"
+            guessedNo < rightNumber ? message.textContent ="higher"
+            :message.textContent ="lower"
 
         }else{
             message.textContent = "You lose😦"
@@ -65,4 +71,16 @@ document.addEventListener("keydown", function(e){
     }
 })
 
-localStorage.setItem("moracras",10)
+
+document.querySelector(".check").addEventListener("clcik", () => {
+    guessedNo = document.querySelector(".guess").value
+
+    const guessedNumber = parseInt(guessedNo);
+    if (guessedNumber >=1 && guessedNumber <= 100  && !isNaN(guessedNumber)){
+       
+        
+    }else {
+        message.textContent = "You entered an invalid number.(Please enter a number between 1-100)"
+        liveScore ++
+    }
+})
